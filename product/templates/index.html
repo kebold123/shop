@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Shop</title>
+    <meta charset="utf-8" />
+</head>
+<body>
+    <h1>Форма</h1>
+    <form method="post" action="postuser/"></form>
+        {% csrf_token %}
+        <p>Имя:<br><input name="name" /></p>
+        <p>Возраст:<br> <input name="age" type="number" /></p>
+        <input type="submit" value="Отправить" />
+    </form>
+</body>
+</html>
