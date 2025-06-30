@@ -101,6 +101,21 @@
       background: #cc0000;
     }
 
+    .recover-btn{
+      background: #29db12;
+      color: white;
+      border: none;
+      padding: 6px 12px;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 14px;
+      transition: background 0.3s ease; 
+    }
+
+    .recover-btn:hover {
+      background: #1a9b09;
+    }
+
     /* Кнопка с плюсом */
     .add-button {
       margin-top: 30px;
@@ -135,16 +150,19 @@
       <a href="/show/{{ user.id }}" class="task-text">
         <span class="task-text">Id: {{ user.id }}      Name: {{ user.name }}       Age: {{ user.age }}</span>
       </a>
-      <a href="{% url 'delete' user.id %}">
-        <button class="delete-btn">Удалить</button>
-      </a>
+      {% if user.archived %}
+       <a href="{% url 'recover' user.id %}">
+         <button class="recover-btn">Восстановить</button>
+       </a>
+      {% else %}
+       <a href="{% url 'delete' user.id %}">
+         <button class="delete-btn">Удалить</button>
+       </a>
+      {% endif %}
     </li>
     {% endfor %}
   </ul>
 </div>
-
-<!-- Кнопка с плюсом -->
-<button class="add-button" onclick="window.location.href='new'">+</button>
 
 </body>
 </html>

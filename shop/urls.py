@@ -20,9 +20,15 @@ from product import views
 
 urlpatterns = [
     path('admin', admin.site.urls),
-    path('', views.home, name='home'),
-    path('index', views.index, name='index'),
+    path('', views.index, name='index'),
+    path('new', views.new, name='new'),
+    # path('index', views.index, name='index'),
+    path('create', views.create, name='create'),
+    path('show/<int:id>', views.show, name='show'),
+    path('delete/<int:id>', views.delete, name='delete'),
     path('about', views.about, name='about'),
     path('product/<str:name>', views.product, name='product'),
-    path('postuser/', views.postuser, name='postuser')
+    path('postuser/', views.postuser, name='postuser'),
+    path('all/', views.all, name='all'),
+    path('recover/<int:id>', views.recover, name='recover'),
 ]
