@@ -14,8 +14,7 @@
     <nav>
       {% if user.is_authenticated %}
         <span>Привет, {{ user.username }}!</span>
-        <!-- <a href="{% url 'logout' %}">Выход</a> -->
-         <a href="/logout/" >Выход</a>
+        <a href="/logout/" >Выход</a>
       {% else %}
         <a href="{% url 'login' %}">Вход</a>
         <a href="{% url 'register' %}">Регистрация</a>
@@ -25,21 +24,33 @@
 
 <div class="container">
   <h1>Пользователи</h1>
-  <ul>
+  <ul class="user-list">
     {% for user in users %}
     <li>
-      <a href="/show/{{ user.id }}" class="task-text">
-        <span class="task-text">Id: {{ user.id }}      Name: {{ user.name }}       Age: {{ user.age }}</span>
+      <a href="/show/{{ user.id }}" class="user-info">
+        <div class="user-field user-id">
+          <span class="field-label">ID</span>
+          <span class="field-value">{{ user.id }}</span>
+        </div>
+        <div class="user-field user-name">
+          <span class="field-label">Имя</span>
+          <span class="field-value">{{ user.name }}</span>
+        </div>
+        <div class="user-field user-age">
+          <span class="field-label">Возраст</span>
+          <span class="field-value">{{ user.age }}</span>
+        </div>
       </a>
-      <a href="{% url 'delete' user.id %}">
-        <button class="delete-btn">Удалить</button>
-      </a>
+      <div class="actions">
+        <a href="{% url 'delete' user.id %}">
+          <button class="delete-btn">Удалить</button>
+        </a>
+      </div>
     </li>
     {% endfor %}
   </ul>
 </div>
 
-<!-- Кнопка с плюсом -->
 <button class="add-button" onclick="window.location.href='new'">+</button>
 
 </body>

@@ -86,7 +86,7 @@ li:hover {
     background: #cc0000;
 }
 
-.recover-btn{
+.recover-btn {
     background: #29db12;
     color: white;
     border: none;
@@ -180,4 +180,70 @@ button {
 
 button:hover {
     background-color: #5a6268;
+}
+
+/* вывод пользователей(усовершенствованный) */
+.user-list {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+.user-list li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 15px;
+    border-bottom: 1px solid #eee;
+    transition: background-color 0.2s;
+}
+
+.user-list li:hover {
+    background-color: #f9f9f9;
+}
+
+.user-info {
+    display: flex;
+    flex: 1;
+    gap: 25px;
+    text-decoration: none !important; 
+    color: inherit !important;
+}
+
+.user-info:hover {
+    text-decoration: none !important;
+    color: inherit !important;
+}
+
+.user-field {
+    min-width: 80px;
+    padding: 5px 0;
+}
+
+.field-label {
+    display: block;
+    font-size: 0.8em;
+    color: #777;
+    margin-bottom: 3px;
+}
+
+.field-value {
+    font-weight: 500;
+    font-size: 1.1em;
+}
+
+.user-id .field-value {
+    color: #666;
+}
+
+.user-name .field-value {
+    color: #184f85;
+}
+
+.user-age .field-value {
+    color: #362d9f;
+}
+
+.actions {
+    margin-left: 15px;
 }
