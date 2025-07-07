@@ -1,5 +1,6 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.http import HttpResponse, HttpResponseRedirect
+from .forms import UserRegistrationForm
 from .models import User
 
 
@@ -56,3 +57,15 @@ def postuser(request):
     age = request.POST.get('age')
     # return render(request, 'about.html', {'name': name, 'age': age})
     return HttpResponse(f'<h2>Имя: {name}, Возраст: {age}</h2>')
+
+def register(request):
+    if request.method == 'POST':
+        form = UserRegistrationForm(request.POST)
+        if form.is_valid():
+            user = form.save(commit=False)
+            user.set_password(form.cleaned_data['password'])
+            user.save()
+            return redirect('login')
+    else:
+        form = UserRegistrationForm()
+    return render(request, 'registration/register.html', {'form': form})
